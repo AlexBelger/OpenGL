@@ -1,0 +1,19 @@
+#pragma once
+
+#include "GLRenderer.h"
+
+class CMain
+{
+public:
+	static CMain& getInstance();
+	CGLRenderer& getRenderer();
+
+	static void timedDraw(int);
+	static void drawScene();
+	static void reshape(int w, int h);
+private:
+	CMain() {};
+	~CMain() {};
+
+	CGLRenderer m_renderer;
+};
