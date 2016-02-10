@@ -1,0 +1,27 @@
+
+!include <win32.mak>
+
+DIR_BIN = bin
+DIR_INTERMEDIATE = intermediate
+OBJ_FILES = \
+	$(DIR_INTERMEDIATE)\main.obj \
+	$(DIR_INTERMEDIATE)\GLProgram.obj \
+	$(DIR_INTERMEDIATE)\GLRenderer.obj \
+	$(DIR_INTERMEDIATE)\GLShader.obj \
+	$(DIR_INTERMEDIATE)\ShapeGenerator.obj 
+all : clean create_dirs cube
+
+cube : $(OBJ_FILES)
+	$(link) $(ldebug) $(conflags) -out:$(DIR_BIN)\cube.exe $** $(conlibs) freeglut.lib glew32.lib opengl32.lib
+
+{Shapes}.cpp{$(DIR_INTERMEDIATE)}.obj:	; $(cc) /EHsc /Fo$(DIR_INTERMEDIATE)\ $(cdebug) $(cflags) $(cvars) $<
+.cpp{$(DIR_INTERMEDIATE)}.obj:		; $(cc) /EHsc /Fo$(DIR_INTERMEDIATE)\ $(cdebug) $(cflags) $(cvars) $<
+
+create_dirs:
+ @if not exist $(DIR_BIN) mkdir $(DIR_BIN)
+ @if not exist $(DIR_INTERMEDIATE) mkdir $(DIR_INTERMEDIATE)
+
+clean:
+ @if exist $(DIR_BIN) rmdir /S /Q $(DIR_BIN)
+ @if exist $(DIR_INTERMEDIATE) rmdir /S /Q $(DIR_INTERMEDIATE)
+
