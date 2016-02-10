@@ -15,7 +15,6 @@ bool CGLRenderer::CreateGLContext(CDC* pDC)
 	PIXELFORMATDESCRIPTOR pfd;
 	memset(&pfd, 0, sizeof(PIXELFORMATDESCRIPTOR));
 	pfd.nSize = sizeof(PIXELFORMATDESCRIPTOR);
-	pfd.nVersion = 1;
 	pfd.dwFlags = PFD_DOUBLEBUFFER | PFD_SUPPORT_OPENGL | PFD_DRAW_TO_WINDOW;
 	pfd.iPixelType = PFD_TYPE_RGBA;
 	pfd.cColorBits = 32;
@@ -104,20 +103,20 @@ void CGLRenderer::SetData()
 	float* vert = new float[9];	// vertex array
 	float* col = new float[9];	// color array
 
-	vert[0] = -0.3; vert[1] = 0.5; vert[2] = -1.0;
-	vert[3] = -0.8; vert[4] = -0.5; vert[5] = -1.0;
-	vert[6] = 0.2; vert[7] = -0.5; vert[8] = -1.0;
+	vert[0] = -0.3f; vert[1] = 0.5f; vert[2] = -1.0f;
+	vert[3] = -0.8f; vert[4] = -0.5f; vert[5] = -1.0f;
+	vert[6] = 0.2f; vert[7] = -0.5f; vert[8] = -1.0f;
 
-	col[0] = 1.0; col[1] = 0.0; col[2] = 0.0;
-	col[3] = 0.0; col[4] = 1.0; col[5] = 0.0;
-	col[6] = 0.0; col[7] = 0.0; col[8] = 1.0;
+	col[0] = 1.0f; col[1] = 0.0f; col[2] = 0.0f;
+	col[3] = 0.0f; col[4] = 1.0f; col[5] = 0.0f;
+	col[6] = 0.0f; col[7] = 0.0f; col[8] = 1.0f;
 
 	// Second simple object
 	float* vert2 = new float[9];	// vertex array
 
-	vert2[0] = -0.2; vert2[1] = 0.5; vert2[2] = -1.0;
-	vert2[3] = 0.3; vert2[4] = -0.5; vert2[5] = -1.0;
-	vert2[6] = 0.8; vert2[7] = 0.5; vert2[8] = -1.0;
+	vert2[0] = -0.2f; vert2[1] = 0.5f; vert2[2] = -1.0f;
+	vert2[3] = 0.3f; vert2[4] = -0.5f; vert2[5] = -1.0f;
+	vert2[6] = 0.8f; vert2[7] = 0.5f; vert2[8] = -1.0f;
 
 	// Two VAOs allocation
 	glGenVertexArrays(2, &m_vaoID[0]);
